@@ -1,0 +1,54 @@
+------- ZAD. 3.1 -------
+
+	x = 2; y = 3;
+	if (x > y):
+	    result = x;
+	else:
+	    result = y;
+
+	powyższy kod jest nieprawidłowy, bo w pythonie nie używamy średników i nie wypisujemy dwoch zmiennych w jednym wierszu 
+	(chyba że krotka)
+
+	-=-=-=-=-=-=-=-=-=-=-
+
+	for i in "axby": if ord(i) < 100: print (i)
+
+	w kodzie brakuje bloków!
+
+	-=-=-=-=-=-=-=-=-=-=-
+
+	for i in "axby": print (ord(i) if ord(i) < 100 else i)
+
+	kod jest okej (nie ma ":" po if)
+
+
+------- ZAD. 3.2 -------
+
+L = [3, 5, 4] ; L = L.sort()
+
+listy są niezmienne! trzeba by nazwać drugą listę np. L1
+i wtedy L1=L.sort()
+
+-=-=-=-=-=-=-=-=-=-=-
+
+x,y=1,2,3
+
+krotka ma określoną liczbę elementów (podane 3 a x i y to tylko 2)
+
+-=-=-=-=-=-=-=-=-=-=-
+
+X = 1, 2, 3 ; X[1]=4
+
+podana jest krotka, a operacja po sredniku dotyczy list
+
+-=-=-=-=-=-=-=-=-=-=-
+
+X="abc" ; X.append("d")
+
+metoda .append zarezerwowana jest dla list, a w stringach wystarczy dodawac, zreszta stringi są zmienne (tutaj byłoby x+="d")
+
+-=-=-=-=-=-=-=-=-=-=-
+
+L=list(map(pow, range(8)))
+
+pow nie ma podanych argumentów, wiec brakuje danych do metody map
