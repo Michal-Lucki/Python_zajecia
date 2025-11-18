@@ -1,3 +1,5 @@
+#edycja 18.11 o 12:40 - poprawilem testy
+
 import unittest
 from math import sqrt #dla pierwiastkow w liczeniu dlugosci 
 
@@ -66,19 +68,19 @@ class TestPoints(unittest.TestCase):
 		pkt1=Point(1.0, 4.10)
 		pkt2=Point(1.000000, 4.1)
 		#floaty takie same, mimo zer po przecinku
-		self.assertTrue(Point.__eq__(pkt1, pkt2))
+		self.assertTrue(pkt1==pkt2)
 		#zmiana wspolrzednej x-owej niszczy rownosc
 		pkt2.x+=0.1
-		self.assertFalse(Point.__eq__(pkt1, pkt2))
+		self.assertFalse(pkt1==pkt2)
 
 	def test_ne(self):
 
 		pkt1=Point(7.1, -2.99)
 		pkt2=Point(7.1, -3)
 		#analogicznie
-		self.assertTrue(Point.__ne__(pkt1, pkt2))
+		self.assertTrue(pkt1!=pkt2)
 		pkt2.y+=0.01
-		self.assertFalse(Point.__ne__(pkt1, pkt2))
+		self.assertFalse(pkt1!=pkt2)
 
 	def test_mul_values(self):
 
@@ -92,17 +94,17 @@ class TestPoints(unittest.TestCase):
 		pkt1=Point(1, 4.1)
 		pkt2=Point(-1, -4.1)
 
-		self.assertTrue(Point(0,0)==Point.__add__(pkt1, pkt2))
+		self.assertTrue(Point(0,0)==pkt1+pkt2)
 		#poniewaz uzywam floatow, to wynikiem jest 36.89999999,
 		#dlatego uzywam AssertAlmostEqual do trzech miejsc
-		self.assertAlmostEqual(Point.__add__(pkt1.mul_values(2), pkt2.mul_values(-7)).y, 36.9, places=3)
+		self.assertAlmostEqual((pkt1.mul_values(2)+pkt2.mul_values(-7)).y, 36.9, places=3)
 
 	def test_sub(self):
 
 		pkt1=Point(0.01, 4)
 		pkt2=Point(7, 10.99)
 
-		self.assertFalse(Point.__sub__(pkt1, pkt2)==Point.__sub__(pkt2, pkt1))
+		self.assertFalse(pkt1-pkt2==pkt2-pkt1)
 		#nie mozna odjac inta od punktu
 		self.assertRaises(AttributeError, Point.__sub__, pkt1, 5)
 
@@ -111,8 +113,8 @@ class TestPoints(unittest.TestCase):
 		pkt1=Point(2, 0)
 		pkt2=Point(0, 7.1)
 		pkt3=Point(1, -7.1)
-		self.assertEqual(Point.__mul__(pkt1, pkt2), 0)
-		self.assertEqual(Point.__mul__(pkt2, pkt3), -50.41)
+		self.assertEqual(pkt1*pkt2, 0)
+		self.assertEqual(pkt2*pkt3, -50.41)
 		#analogicznie: nie mozna zrobić iloczynu sklaranego ze skalara (inta) i wektora
 		self.assertRaises(AttributeError, Point.__mul__, 3, pkt1)
 
