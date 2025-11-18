@@ -1,3 +1,5 @@
+#edycja 18.11 o 12:40 - poprawilem testy
+
 from points import Point #moduł points z mojego pliku points.py
 from math import sqrt #do wzoru Herona
 import unittest
@@ -82,7 +84,7 @@ class TestTriangles(unittest.TestCase):
 
 	def test_str(self):
 
-		self.assertEqual(Triangle.__str__(Triangle(0,0,1,1,2,2)), "[(0, 0), (1, 1), (2, 2)]")
+		self.assertEqual(str((Triangle(0,0,1,1,2,2))), "[(0, 0), (1, 1), (2, 2)]")
 
 	def test_repr(self):
 
@@ -90,12 +92,12 @@ class TestTriangles(unittest.TestCase):
 
 	def test_eq(self):
 		
-		self.assertTrue(Triangle.__eq__(Triangle(1,2,3,4,5,6), Triangle(5,6,1,2,3,4)))
-		self.assertTrue(Triangle.__eq__(Triangle(0,1,0,0,1,0), Triangle(0,0,1,0,0,1)))
+		self.assertTrue(Triangle(1,2,3,4,5,6)==Triangle(5,6,1,2,3,4))
+		self.assertTrue(Triangle(0,1,0,0,1,0)==Triangle(0,0,1,0,0,1))
 
 	def test_ne(self):
 		
-		self.assertTrue(Triangle.__ne__(Triangle(1,2,3,4,5,6), Triangle(6,5,4,3,2,1)))
+		self.assertTrue((Triangle(1,2,3,4,5,6)!=Triangle(6,5,4,3,2,1)))
 
 	def test_center(self):
 
@@ -119,7 +121,7 @@ class TestTriangles(unittest.TestCase):
 		troj1=Triangle(7,3,2,1,0,0)
 		#przesyniecie trojkąta o 0,0 nie zmienia go, wiec powinien byc
 		#równy z oryginałem (po prostu sie nie rusza)
-		self.assertTrue(Triangle.__eq__(Triangle.move(troj1, 0, 0), troj1))
+		self.assertTrue(Triangle.move(troj1, 0, 0)==troj1)
 
 if __name__=='__main__':
 	unittest.main()
